@@ -28,9 +28,9 @@ import java.util.concurrent.TimeUnit
 
 private const val REQUEST_FOREGROUND_AND_BACKGROUND_PERMISSION_RESULT_CODE = 33
 private const val REQUEST_FOREGROUND_ONLY_PERMISSIONS_REQUEST_CODE = 34
-private const val REQUEST_TURN_DEVICE_LOCATION_ON = 29
 private const val TAG = "SAVE_REMINDER_FRAGMENT"
 private const val GEOFENCE_RADIUS_IN_METERS = 10000f
+const val REQUEST_TURN_DEVICE_LOCATION_ON = 29
 
 class SaveReminderFragment : BaseFragment() {
     // Get the view model this time as a single to be shared with the another fragment
@@ -224,7 +224,7 @@ class SaveReminderFragment : BaseFragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_TURN_DEVICE_LOCATION_ON) {
-            checkDeviceLocationSettingsAndStartGeofence(false)
+            checkDeviceLocationSettingsAndStartGeofence()
         }
     }
 }

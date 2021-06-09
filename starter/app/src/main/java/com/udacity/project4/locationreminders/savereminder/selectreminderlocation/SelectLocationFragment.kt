@@ -257,22 +257,22 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     private fun setMapStyle(map: GoogleMap) {
-       try {
-           // Customize the styling of the base map using a JSON object defined
-           // in a raw resource file.
-           val success = map.setMapStyle(
-               MapStyleOptions.loadRawResourceStyle(
-                   requireContext(),
-                   R.raw.map_style
-               )
-           )
+        try {
+            // Customize the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            val success = map.setMapStyle(
+                MapStyleOptions.loadRawResourceStyle(
+                    requireContext(),
+                    R.raw.map_style
+                )
+            )
 
-           if (!success) {
-               Log.e(TAG, "Style parsing failed.")
-           }
-       } catch (e: Resources.NotFoundException) {
-           Log.e(TAG, "Can't find style. Error: ", e)
-       }
+            if (!success) {
+                Log.e(TAG, "Style parsing failed.")
+            }
+        } catch (e: Resources.NotFoundException) {
+            Log.e(TAG, "Can't find style. Error: ", e)
+        }
     }
 
     override fun onRequestPermissionsResult(
@@ -294,7 +294,8 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
     }
 
     private fun locationServicesEnabled(): Boolean {
-        val locationManager = requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        val locationManager =
+            requireContext().getSystemService(Context.LOCATION_SERVICE) as LocationManager
         return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)
     }
 
@@ -326,12 +327,6 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
                     Log.d(TAG, "Error resolving location settings:" + e.message)
                 }
             } else {
-//                Snackbar.make(
-//                    binding.root,
-//                    R.string.location_required_error, Snackbar.LENGTH_INDEFINITE
-//                ).setAction(android.R.string.ok) {
-//                    checkDeviceLocationSettingsAndStartGeofence()
-//                }.show()
                 _viewModel.showErrorMessage.postValue(getString(R.string.location_required_error))
             }
         }
@@ -341,4 +336,6 @@ class SelectLocationFragment : BaseFragment(), OnMapReadyCallback {
             }
         }
     }
+
+
 }
